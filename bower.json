@@ -1,0 +1,18 @@
+{
+  "name": "detri",
+  "version": "0.0.1",
+  "homepage": "https://github.com/vinc/detri",
+  "authors": [
+    "Vincent Ollivier <v@vinc.cc> (http://vinc.cc)"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "sprintf": "1.0.2"
+  }
+}

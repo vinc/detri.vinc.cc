@@ -1,0 +1,22 @@
+{
+  "name": "detri",
+  "version": "0.0.1",
+  "description": "Detri",
+  "main": "lib/detri.js",
+  "bin": "bin/detri",
+  "dependencies": {
+    "express": "^4.12.3",
+    "sprintf-js": "^1.0.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/vinc/detri"
+  },
+  "author": "Vincent Ollivier <v@vinc.cc> (http://vinc.cc)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vinc/detri/issues"
+  },
+  "homepage": "https://detri.vinc.cc"
+}
