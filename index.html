@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detri</title>
+
+    <link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+    <style>
+      html {
+        height: 100%;
+        background: #eee;
+      }
+      body {
+        height: 100%;
+        text-align: center;
+        display: table;
+        width: 100%;
+        margin: 0;
+      }
+      .container {
+        display: table-cell;
+        vertical-align: middle;
+        color: #666;
+        font-size: 8vw;
+        font-family: "Droid Sans Mono", monospace;
+      }
+    </style>
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/sprintf/1.0.1/sprintf.min.js"></script>
+    <script src="/lib/detri.js"></script>
+    <script>
+      $(function() {
+        $.getJSON("/ephemeris.json", function(ephemeris) {
+          navigator.geolocation.getCurrentPosition(function(pos) {
+            var lat = pos.coords.latitude;
+            var lon = pos.coords.longitude;
+            var render = function() {
+              var now = +new Date();
+
+              $("#detri").text('' + new window.Detri(ephemeris, now, lat, lon));
+            };
+
+            render();
+            setInterval(render, 60000);
+          });
+        });
+      });
+    </script>
+
+    <!--[if lt IE 9]>
+      <script src="https<span class="sep">:</span>//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https<span class="sep">:</span>//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <span id="detri"></span>
+    </div>
+  </body>
+</html>

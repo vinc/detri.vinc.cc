@@ -8,6 +8,14 @@ var Detri = require('./lib/detri');
 var filename = path.resolve(__dirname, './ephemeris.json');
 var ephemeris = JSON.parse(fs.readFileSync(filename, 'utf8'))
 
+var read = function(filename, callback) {
+  var pathname = path.resolve(__dirname, filename);
+
+  fs.readFile(pathname, 'utf8', function(err, data) {
+    callback(data); 
+  });
+};
+
 app.get('/', function(req, res) {
   var lat = parseFloat(req.query.lat, 10) || 0;
   var lon = parseFloat(req.query.lon, 10) || 0;
@@ -19,10 +27,26 @@ app.get('/', function(req, res) {
     break;
   case "html":
   default:
-    res.send("<h1>Detri</h1>"); // TODO: web app
+    read('index.html', function(data) {
+      res.send(data)
+    });
     break;
   }
 });
+
+app.get('/lib/detri.js', function(req, res) {
+  read('.' + req.url, function(data) {
+    res.send(data);
+  });
+});
+
+app.get('/ephemeris.json', function(req, res) {
+  read('.' + req.url, function(data) {
+    res.send(data);
+  });
+});
+
+//app.use(express.static(__dirname + '/public'));
 
 var server = app.listen(1337, function() {
   var host = server.address().address;
