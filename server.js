@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var express = require('express');
+var port = process.env.PORT || 3000;
 var app = express();
 
 var Detri = require('./lib/detri');
@@ -48,9 +49,6 @@ app.get('/ephemeris.json', function(req, res) {
 
 //app.use(express.static(__dirname + '/public'));
 
-var server = app.listen(1337, function() {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Detri app listening at http://%s:%s', host, port);
+var server = app.listen(port, function() {
+  console.log('server listening at port %d', port);
 });
