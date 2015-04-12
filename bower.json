@@ -13,6 +13,5 @@
     "bower_components"
   ],
   "dependencies": {
-    "sprintf": "1.0.2"
   }
 }
