@@ -1,0 +1,13 @@
+{
+  "name": "Detri Clock",
+  "description": "A clock for the Detri calendar",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/icon_128.png"
+  },
+  "developer": {
+    "name": "Vincent Ollivier",
+    "url": "http://vinc.cc"
+  },
+  "default_locale": "en"
+}

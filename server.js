@@ -17,37 +17,7 @@ var read = function(filename, callback) {
   });
 };
 
-app.get('/', function(req, res) {
-  var lat = parseFloat(req.query.lat, 10) || 0;
-  var lon = parseFloat(req.query.lon, 10) || 0;
-  var now = +new Date(req.query.now || new Date());
-
-  switch (req.query.format) {
-  case "txt":
-    res.send('' + new Detri(ephemeris, now, lat, lon));
-    break;
-  case "html":
-  default:
-    read('index.html', function(data) {
-      res.send(data)
-    });
-    break;
-  }
-});
-
-app.get('/lib/detri.js', function(req, res) {
-  read('.' + req.url, function(data) {
-    res.send(data);
-  });
-});
-
-app.get('/ephemeris.json', function(req, res) {
-  read('.' + req.url, function(data) {
-    res.send(data);
-  });
-});
-
-//app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 var server = app.listen(port, function() {
   console.log('server listening at port %d', port);

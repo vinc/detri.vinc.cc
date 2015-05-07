@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="/cache.manifest">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Detri</title>
+    <title>Detri Clock</title>
 
-    <link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
     <style>
+      @font-face {
+        src: url("/droid_sans_mono.woff");
+        font-family: "Droid Sans Mono";
+        font-weight: 400;
+        font-style: normal;
+      }
       html {
         height: 100%;
         background: #eee;
@@ -40,8 +45,8 @@
       }
     </style>
 
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="/lib/detri.js"></script>
+    <script src="/jquery.min.js"></script>
+    <script src="/detri.js"></script>
     <script>
       $(function() {
         $.getJSON("/ephemeris.json", function(ephemeris) {
